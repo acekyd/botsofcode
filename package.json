@@ -1,7 +1,7 @@
 {
-  "name": "botsofcode",
+  "name": "devlogicbot",
   "version": "1.0.1",
-  "description": "A bot for bitsofco.de",
+  "description": "A bot for devlogic.co",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

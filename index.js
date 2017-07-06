@@ -30,13 +30,13 @@ const Twitter = require('./modules/twitter');
 
  ******************* */
 const me = {
-    id: 2714960622,
-    screen_name: 'ireaderinokun'
+    id: 396451105,
+    screen_name: 'ace_kyd'
 };
 
-const botsofcode = {
-    id: 743145993844179000,
-    screen_name: 'botsofcode'
+const devlogicbot = {
+    id: 882765573045747712,
+    screen_name: 'devlogicbot'
 };
 
 const emojis = ['👊', '👊', '🙌', '👍', '💁', '👌', '🙅', '👯'];
@@ -71,11 +71,11 @@ function getTweet(tweet) {
 
  ******************* */
 
-const stream = T.stream('statuses/filter', { track: ['bitsofco.de', 'bitsofcode'] });
+const stream = T.stream('statuses/filter', { track: ['devlogic.co', 'devlogic'] });
 
 stream.on('tweet', (tweet) => {
 
-	if ( tweet.user.id === botsofcode.id ) {
+	if ( tweet.user.id === devlogicbot.id ) {
 		return;
 	}
 
@@ -88,7 +88,7 @@ stream.on('tweet', (tweet) => {
 
     if ( tweet.retweeted_status ) return;
 
-	if ( tweet.text.toLowerCase().includes('@ireaderinokun') ) {
+	if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
 		if ( shouldSendReply() ) {
             Twitter.reply(tweet, getTweet(tweet));
 		}

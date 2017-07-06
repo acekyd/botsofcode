@@ -1,7 +1,7 @@
-# botsofcode
+# DevLogic Bot
 
-<img src="https://pbs.twimg.com/profile_images/765443654471323648/zPfYoDh__400x400.jpg" alt="" style="width: 200px">
+A twitter bot for [devlogic.co](https://devlogic.co).
 
-A twitter bot for [bitsofco.de](https://bitsofco.de).
+Forked from @ireade's botsofcode.
 
-[Read the blog post](https://bitsofco.de/making-botsofcode-an-introduction-to-twitter-bots/) | [Follow @botsofcode](https://twitter.com/botsofcode)
+[Read how she did it in this blog post](https://bitsofco.de/making-botsofcode-an-introduction-to-twitter-bots/) | [Follow @devlogicbot](https://twitter.com/devlogicbot)
