@@ -59,7 +59,8 @@ function getEmoji() {
 
 function getTweet(tweet) {
 
-    const text = `Thanks for sharing! ${ getEmoji() }`;
+    //const text = `Thanks for sharing! ${ getEmoji() }`;
+    const text = 'AceKYD says thank you! 🙌 #Year23 ♠️';
     return text;
 
 }
@@ -83,7 +84,7 @@ stream.on('tweet', (tweet) => {
     }
 
     if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
-            Twitter.reply(tweet, 'AceKYD says thank you! 🙌 #Year23 ♠️');
+            Twitter.reply(tweet, getTweet(tweet));
             Twitter.like(tweet);
             Twitter.retweet(tweet);
             if ( tweet.retweeted_status ) return;
