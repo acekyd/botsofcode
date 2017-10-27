@@ -71,33 +71,52 @@ function getTweet(tweet) {
 
  ******************* */
 
-const stream = T.stream('statuses/filter', { track: ['devlogic.co', 'devlogic'] });
+//const stream = T.stream('statuses/filter', { track: ['devlogic.co', 'devlogic'] });
+
+const stream = T.stream('statuses/filter', { track: ['Happy Birthday'] });
+
 
 stream.on('tweet', (tweet) => {
+    
+    if ( tweet.user.id === devlogicbot.id ) {
+        return;
+    }
 
-	if ( tweet.user.id === devlogicbot.id ) {
-		return;
-	}
-
-    Twitter.like(tweet);
-
-	if ( tweet.user.id === me.id ) {
-        Twitter.retweet(tweet);
-		return;
-	}
-
-    if ( tweet.retweeted_status ) return;
-
-	if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
-		if ( shouldSendReply() ) {
-            Twitter.reply(tweet, getTweet(tweet));
-		}
-		return;
-	}
-
-    Twitter.reply(tweet, getTweet(tweet));
+    if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
+            Twitter.reply(tweet, 'AceKYD says thank you! 🙌 #Year23 ♠️');
+            Twitter.like(tweet);
+            Twitter.retweet(tweet);
+            if ( tweet.retweeted_status ) return;
+        return;
+    }
 
 });
+
+// stream.on('tweet', (tweet) => {
+
+// 	if ( tweet.user.id === devlogicbot.id ) {
+// 		return;
+// 	}
+
+//     Twitter.like(tweet);
+
+// 	if ( tweet.user.id === me.id ) {
+//         Twitter.retweet(tweet);
+// 		return;
+// 	}
+
+//     if ( tweet.retweeted_status ) return;
+
+// 	if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
+// 		if ( shouldSendReply() ) {
+//             Twitter.reply(tweet, getTweet(tweet));
+// 		}
+// 		return;
+// 	}
+
+//     Twitter.reply(tweet, getTweet(tweet));
+
+// });
 
 
 
