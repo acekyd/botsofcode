@@ -87,9 +87,8 @@ stream.on('tweet', (tweet) => {
         if ( tweet.user.id !== me.id ) {
             Twitter.like(tweet);
             Twitter.retweet(tweet);
-            if ( tweet.retweeted_status ) return;
-
             Twitter.reply(tweet, getTweet(tweet));
+            if ( tweet.retweeted_status ) return;
         }
         return;
     }
