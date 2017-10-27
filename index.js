@@ -84,10 +84,12 @@ stream.on('tweet', (tweet) => {
     }
 
     if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
+        if ( tweet.user.id !== me.id ) {
             Twitter.reply(tweet, getTweet(tweet));
             Twitter.like(tweet);
             Twitter.retweet(tweet);
             if ( tweet.retweeted_status ) return;
+        }
         return;
     }
 
