@@ -59,8 +59,7 @@ function getEmoji() {
 
 function getTweet(tweet) {
 
-    //const text = `Thanks for sharing! ${ getEmoji() }`;
-    const text = 'AceKYD says thank you! 🙌 #Year23 ♠️';
+    const text = `Thanks for sharing! ${ getEmoji() }`;
     return text;
 
 }
@@ -72,51 +71,33 @@ function getTweet(tweet) {
 
  ******************* */
 
-//const stream = T.stream('statuses/filter', { track: ['devlogic.co', 'devlogic'] });
-
-const stream = T.stream('statuses/filter', { track: ['Happy Birthday'] });
-
+const stream = T.stream('statuses/filter', { track: ['devlogic.co', 'devlogic'] });
 
 stream.on('tweet', (tweet) => {
-    
-    if ( tweet.user.id === devlogicbot.id ) {
-        return;
-    }
 
-    if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
-        if ( tweet.user.id !== me.id ) {
+	if ( tweet.user.id === devlogicbot.id ) {
+		return;
+	}
+
+    Twitter.like(tweet);
+
+	if ( tweet.user.id === me.id ) {
+        Twitter.retweet(tweet);
+		return;
+	}
+
+    if ( tweet.retweeted_status ) return;
+
+	if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
+		if ( shouldSendReply() ) {
             Twitter.reply(tweet, getTweet(tweet));
-        }
-        return;
-    }
+		}
+		return;
+	}
+
+    Twitter.reply(tweet, getTweet(tweet));
 
 });
-
-// stream.on('tweet', (tweet) => {
-
-// 	if ( tweet.user.id === devlogicbot.id ) {
-// 		return;
-// 	}
-
-//     Twitter.like(tweet);
-
-// 	if ( tweet.user.id === me.id ) {
-//         Twitter.retweet(tweet);
-// 		return;
-// 	}
-
-//     if ( tweet.retweeted_status ) return;
-
-// 	if ( tweet.text.toLowerCase().includes('@ace_kyd') ) {
-// 		if ( shouldSendReply() ) {
-//             Twitter.reply(tweet, getTweet(tweet));
-// 		}
-// 		return;
-// 	}
-
-//     Twitter.reply(tweet, getTweet(tweet));
-
-// });
 
 
 
